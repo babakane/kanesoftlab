@@ -128,7 +128,8 @@
                 <li><strong>Phase 1: Decision Logic (Node B)</strong><br>
                     The script initializes by "branching"—detecting if it's running in CLI mode (Python
                     <code>subprocess</code>) or UI mode (Browser <code>WASM</code>). It confirms the integrity of the
-                    Source Project (Node A) before proceeding.</li>
+                    Source Project (Node A) before proceeding.
+                </li>
 
                 <li><strong>Phase 2: The Orchestration Engines (Nodes C & D)</strong><br>
                     This is the "focus" of the tool. The **Bundler Engine** focuses on <i>Autonomy</i>: transforming
@@ -136,10 +137,12 @@
                     focuses on <i>System Simulation</i>: it wraps OS-level requirements (Service Workers) into the HTML
                     document's RAM during execution.</li>
 
-                <li><strong>Phase 3: Stream Consolidation (Node G)</strong><br>
-                    Finally, the algorithm merges the outputs of both engines (E & F) into a single, cohesive buffer.
-                    The final <code>.write()</code> operation generates the standalone artifact, ready for Node H (OS
-                    Installation).</li>
+                <li><strong>Phase 3: Entities Composition (Node G)</strong><br>
+                    This is the final unification. The algorithm focuses on the **Logic of Entities Composition**: it
+                    takes the raw binary stream from the Bundler and the metadata structure from the Injector, composing
+                    them into a single "Living Document." By merging these distinct entities into a unified buffer, the
+                    script ensures that the final HTML isn't just a file, but a self-bootstrapping environment ready for
+                    Node H (OS Installation).</li>
             </ul>
 
             <h2>3. Code Structure Guide</h2>
