@@ -68,6 +68,10 @@
             overflow-x: auto;
         }
     </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
 </head>
 
 <body>
@@ -97,38 +101,53 @@
                 Locally, offline, or even inside a Google Drive folder? This is the philosophy behind our latest tool:
                 <strong>The PWA Single File Converter</strong>.</p>
 
+            <h2>1. Architecture Overview</h2>
+            <div class="mermaid"
+                style="background: var(--surface-color); padding: 2rem; border-radius: 12px; margin: 3rem 0;">
+                graph TD
+                A[React/Next.js Project] --> B{Kane Converter}
+                B --> C[esbuild Bundler]
+                B --> D[PWA Injector]
+                C --> E[Inlined JS/CSS]
+                D --> F[Encrypted SW/Manifest]
+                E & F --> G[Single HTML Artifact]
+                G --> H[Chrome: Install as App]
+            </div>
+
             <blockquote>
                 "True portability means carrying your entire environment in a single file, with no strings attached."
             </blockquote>
 
-            <h2>The PWA Advantage</h2>
-            <p>By bundling a project into a single file, we eliminate the 'broken path' problem. Using data-URIs for
-                images and inlining all CSS/JS, the resulting HTML becomes a complete ecosystem. By injecting a
-                Base64-encoded Service Worker, we enable the Chrome 'Install as App' feature for any single-file output.
-            </p>
-
-            <p>This is perfect for internal documentation, portable tools, or AI-generated dashboards that need to stay
-                private on your local machine.</p>
-
-            <h2>Two Ways to Convert</h2>
-            <p>We've released this tool in two flavors to match your workflow:</p>
-
-            <ul style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem;">
-                <li style="margin-bottom: 1rem;"><strong>The CLI Script:</strong> A Python utility for developers who
-                    need to automate the conversion of large TypeScript/React projects.</li>
-                <li style="margin-bottom: 1rem;"><strong>The Web UI:</strong> A premium, browser-based experience where
-                    you can drag and drop folders for instant bundling.</li>
+            <h2>2. Algorithm Composition</h2>
+            <p>The conversion process is structured around a precise orchestration of three main modules:</p>
+            <ul style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                <li><strong>Tree Walking & Scaffolding:</strong> The script first identifies entry points (index.tsx)
+                    and maps the dependency graph, excluding noise like node_modules.</li>
+                <li><strong>High-Fidelity Bundling:</strong> Using <code>esbuild</code>, we transpile and minify
+                    everything into a single JS string. Assets like PNGs or SVGs are converted to <code>Data-URIs</code>
+                    to ensure 100% autonomy.</li>
+                <li><strong>PWA Virtualization:</strong> Instead of separate files, the Service Worker and Manifest are
+                    Base64 encoded and injected into the HTML as Blobs, tricking the browser into recognizing a full
+                    application lifecycle during installation.</li>
             </ul>
 
+            <h2>3. Code Structure Guide</h2>
+            <p>To help you build similar tools, here is the organizational structure used in this project:</p>
             <div class="code-block">
-                # Convert via command line<br>
-                python convert_react_to_pwa.py --project-dir ./my-app --output app.html
+                project-root/<br>
+                ├── kane_script/ # Core Python logic<br>
+                │ ├── converter.py # Subprocess orchestrator<br>
+                │ └── pwa_template.py # HTML/JS injection templates<br>
+                ├── web_ui/ # Front-end tool interface<br>
+                │ ├── index.html # Glassmorphism UI<br>
+                │ └── bundler_wasm.js # Browser-side processing<br>
+                └── build/ # Final Single-File Output
             </div>
 
             <div
                 style="margin-top: 5rem; text-align: center; background: var(--surface-color); padding: 4rem; border-radius: 20px; border: 1px solid var(--border-color);">
                 <h2 style="margin-top: 0;">Try the Converter</h2>
-                <p>Start simplifying your deployment workflow today.</p>
+                <p>Start simplifying your deployment workflow today using the KaneSoftLab method.</p>
                 <div class="cta-group" style="margin-top: 2rem;">
                     <a href="pwa_converter.html" class="btn btn-primary">Launch Web UI</a>
                     <a href="https://github.com/babakane" class="btn btn-secondary">Download Script</a>
