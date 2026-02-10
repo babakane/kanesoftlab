@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications | KaneSoftLab</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .badge-python {
+            background: #3776AB;
+            color: white;
+        }
+
+        .badge-llm {
+            background: #00A67E;
+            color: white;
+        }
+
+        .badge-security {
+            background: #E34F26;
+            color: white;
+        }
+
+        .app-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .app-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 1rem;
+            padding-top: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">KaneSoftLab</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="apps.html">Applications</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <header style="padding: 8rem 0 4rem 0; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Software Hub</h1>
+            <p style="color: var(--text-secondary);">Browse our collection of open-source tools and intelligence
+                frameworks.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="feature-grid">
+                <!-- KaneScript -->
+                <div class="card app-card">
+                    <div class="badge-group">
+                        <span class="badge badge-python">Python</span>
+                        <span class="badge badge-llm">LLM</span>
+                    </div>
+                    <h3 class="card-title">KaneScript</h3>
+                    <p class="card-description">An interactive terminal that blends natural language with powerful
+                        commands to orchestrate your entire AI workflow. Supports OpenAI, Claude, Google Gemini, and
+                        local Ollama models.</p>
+                    <div class="app-actions">
+                        <a href="https://github.com/babakane" target="_blank"
+                            style="color: var(--primary-accent); font-weight: 600;">GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- SDA -->
+                <div class="card app-card">
+                    <div class="badge-group">
+                        <span class="badge badge-python">Python</span>
+                        <span class="badge badge-security">Security</span>
+                    </div>
+                    <h3 class="card-title">SDA (Secure Data App)</h3>
+                    <p class="card-description">A multi-purpose security tool providing system junk cleaning, integrity
+                        monitoring for sensitive files, and a cryptographic password manager built on SQLite and
+                        AES-GCM.</p>
+                    <div class="app-actions">
+                        <a href="https://github.com/babakane" target="_blank"
+                            style="color: var(--primary-accent); font-weight: 600;">GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- LLM Notebook -->
+                <div class="card app-card">
+                    <div class="badge-group">
+                        <span class="badge badge-python">Python</span>
+                        <span class="badge badge-llm">LLM</span>
+                    </div>
+                    <h3 class="card-title">LLM Notebook</h3>
+                    <p class="card-description">A specialized notebook environment for managing project-specific tasks
+                        with AI assistance, featuring priority tags, due date alerts, and AI rewrite suggestions.</p>
+                    <div class="app-actions">
+                        <a href="https://github.com/babakane" target="_blank"
+                            style="color: var(--primary-accent); font-weight: 600;">GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- Snipping Automation -->
+                <div class="card app-card">
+                    <div class="badge-group">
+                        <span class="badge badge-python">Python</span>
+                    </div>
+                    <h3 class="card-title">Snipping Automation</h3>
+                    <p class="card-description">Automate the capture and categorization of screenshots for tutorials and
+                        project documentation. Features smart region detection and auto-save capabilities.</p>
+                    <div class="app-actions">
+                        <a href="https://github.com/babakane" target="_blank"
+                            style="color: var(--primary-accent); font-weight: 600;">GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- App Scaffolding -->
+                <div class="card app-card">
+                    <div class="badge-group">
+                        <span class="badge badge-python">Python</span>
+                    </div>
+                    <h3 class="card-title">App Creation Lab</h3>
+                    <p class="card-description">A set of scripts for intelligent application scaffolding and packaging.
+                        Includes preset config generators and custom templates for rapid development.</p>
+                    <div class="app-actions">
+                        <a href="https://github.com/babakane" target="_blank"
+                            style="color: var(--primary-accent); font-weight: 600;">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 KaneSoftLab. Built with Passion for the Open Source Community.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
