@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamlining Your AI Workflow with Project Zipper | KaneSoftLab Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10rem 2rem;
+        }
+
+        .post-meta {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .post-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+        }
+
+        .post-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .post-content h2 {
+            font-size: 2rem;
+            margin: 4rem 0 1.5rem 0;
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background: var(--surface-color);
+            border-left: 4px solid var(--primary-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">KaneSoftLab</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="apps.html">Applications</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="post-container">
+        <div class="post-meta">Published Feb 10, 2026 • 4 min read</div>
+        <h1 class="post-title">Streamlining Your AI Workflow with Project Zipper</h1>
+
+        <div class="post-content">
+            <p>If you have ever tried to upload a full-scale React or Next.js project to <strong>Google AI
+                    Studio</strong>, you know the struggle. Navigating through hundreds of files, avoiding the dreaded
+                <code>node_modules</code> weight, and trying to maintain a coherent context for the LLM can quickly turn
+                into a logistical nightmare.</p>
+
+            <p>At KaneSoftLab, we faced this exact problem while developing our own laboratory tools. That’s why we
+                built <strong>Project Zipper</strong>—a robust Python utility designed to consolidate your entire
+                codebase into a single, clean, and versioned archive.</p>
+
+            <div class="highlight-box">
+                <h3 style="margin-bottom: 1rem;">The Challenge: AI Context Management</h3>
+                <p style="margin-bottom: 0;">Adding an entire project to AI Studio manually is complex. Between hidden
+                    system files and massive dependency folders, it’s easy to get confused or hit token limits with
+                    irrelevant data.</p>
+            </div>
+
+            <h2>Why Zipping Matters for AI Studio</h2>
+            <p>Google AI Studio is an incredible platform for testing prompts and building long-context applications.
+                However, "adding files" one by one is inefficient. By zipping your project folder, you create a single
+                source of truth that the AI can digest far more reliably.</p>
+
+            <p>Project Zipper goes a step further by automatically excluding the "noise." It knows that the AI doesn't
+                need to see your 200MB <code>node_modules</code> folder or your local <code>.git</code> history. It
+                focuses on your source code, your configurations, and your logic—the things that actually matter for
+                development.</p>
+
+            <h2>Intelligent Automation</h2>
+            <p>With a single command like <code>python project_zipper.py .</code>, the tool walks your directory tree,
+                applies smart filters, and generates a timestamped ZIP. This allows you to maintain multiple versions of
+                your project context as you iterate with the AI.</p>
+
+            <p>No more confusion. No more manual selection. Just clean, versioned archives ready for your next big AI
+                breakthrough.</p>
+
+            <div style="margin-top: 4rem; text-align: center;">
+                <a href="apps.html" class="btn btn-primary">Download Project Zipper</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
+            <a href="blog.html" style="color: var(--primary-accent); font-weight: 600;">← Back to Blog</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 KaneSoftLab. Built with Passion for the Open Source Community.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
