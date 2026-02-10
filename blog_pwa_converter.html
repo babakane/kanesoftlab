@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking the Build: Why Every Project Should Be a Single File | KaneSoftLab Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10rem 2rem;
+        }
+
+        .post-meta {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .post-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .post-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .post-content h2 {
+            font-size: 2rem;
+            margin: 4rem 0 1.5rem 0;
+            color: var(--text-primary);
+        }
+
+        blockquote {
+            font-size: 1.75rem;
+            font-style: italic;
+            border-left: 4px solid var(--primary-accent);
+            padding: 1rem 0 1rem 2rem;
+            margin: 4rem 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .code-block {
+            background: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 3rem 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">KaneSoftLab</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="apps.html">Applications</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="post-container">
+        <div class="post-meta">Feb 10, 2026 • 5 min read</div>
+        <h1 class="post-title">Breaking the Build: Why Every Project Should Be a Single File</h1>
+        <p class="post-subtitle">The future of web deployment isn't complex CI/CD pipelines—it's high-fidelity,
+            self-contained artifacts.</p>
+
+        <div class="post-content">
+            <p>Modern web development has a friction problem. To deploy a simple React app, we often navigate a
+                labyrinth of AWS S3 buckets, Netlify redirects, or Vercel build settings. While these tools are
+                powerful, they separate the <i>logic</i> from the <i>artifact</i>.</p>
+
+            <p>What if you could take a massive Next.js project and "freeze" it into a single HTML file that just works?
+                Locally, offline, or even inside a Google Drive folder? This is the philosophy behind our latest tool:
+                <strong>The PWA Single File Converter</strong>.</p>
+
+            <blockquote>
+                "True portability means carrying your entire environment in a single file, with no strings attached."
+            </blockquote>
+
+            <h2>The PWA Advantage</h2>
+            <p>By bundling a project into a single file, we eliminate the 'broken path' problem. Using data-URIs for
+                images and inlining all CSS/JS, the resulting HTML becomes a complete ecosystem. By injecting a
+                Base64-encoded Service Worker, we enable the Chrome 'Install as App' feature for any single-file output.
+            </p>
+
+            <p>This is perfect for internal documentation, portable tools, or AI-generated dashboards that need to stay
+                private on your local machine.</p>
+
+            <h2>Two Ways to Convert</h2>
+            <p>We've released this tool in two flavors to match your workflow:</p>
+
+            <ul style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem;">
+                <li style="margin-bottom: 1rem;"><strong>The CLI Script:</strong> A Python utility for developers who
+                    need to automate the conversion of large TypeScript/React projects.</li>
+                <li style="margin-bottom: 1rem;"><strong>The Web UI:</strong> A premium, browser-based experience where
+                    you can drag and drop folders for instant bundling.</li>
+            </ul>
+
+            <div class="code-block">
+                # Convert via command line<br>
+                python convert_react_to_pwa.py --project-dir ./my-app --output app.html
+            </div>
+
+            <div
+                style="margin-top: 5rem; text-align: center; background: var(--surface-color); padding: 4rem; border-radius: 20px; border: 1px solid var(--border-color);">
+                <h2 style="margin-top: 0;">Try the Converter</h2>
+                <p>Start simplifying your deployment workflow today.</p>
+                <div class="cta-group" style="margin-top: 2rem;">
+                    <a href="pwa_converter.html" class="btn btn-primary">Launch Web UI</a>
+                    <a href="https://github.com/babakane" class="btn btn-secondary">Download Script</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
+            <a href="blog.html" style="color: var(--primary-accent); font-weight: 600;">← Back to Blog</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 KaneSoftLab. Built with Passion for the Open Source Community.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
