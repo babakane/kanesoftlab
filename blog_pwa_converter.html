@@ -99,7 +99,8 @@
 
             <p>What if you could take a massive Next.js project and "freeze" it into a single HTML file that just works?
                 Locally, offline, or even inside a Google Drive folder? This is the philosophy behind our latest tool:
-                <strong>The PWA Single File Converter</strong>.</p>
+                <strong>The PWA Single File Converter</strong>.
+            </p>
 
             <h2>1. Architecture Overview</h2>
             <div class="mermaid"
@@ -118,17 +119,27 @@
                 "True portability means carrying your entire environment in a single file, with no strings attached."
             </blockquote>
 
-            <h2>2. Algorithm Composition</h2>
-            <p>The conversion process is structured around a precise orchestration of three main modules:</p>
+            <h2>2. Logic Flow: From Diagram to Code</h2>
+            <p>To design a script like this, we transform the high-level Architecture Diagram into a sequential
+                algorithm that focuses on "Logic Virtualization." Here is how the diagram nodes map to the final code:
+            </p>
+
             <ul style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
-                <li><strong>Tree Walking & Scaffolding:</strong> The script first identifies entry points (index.tsx)
-                    and maps the dependency graph, excluding noise like node_modules.</li>
-                <li><strong>High-Fidelity Bundling:</strong> Using <code>esbuild</code>, we transpile and minify
-                    everything into a single JS string. Assets like PNGs or SVGs are converted to <code>Data-URIs</code>
-                    to ensure 100% autonomy.</li>
-                <li><strong>PWA Virtualization:</strong> Instead of separate files, the Service Worker and Manifest are
-                    Base64 encoded and injected into the HTML as Blobs, tricking the browser into recognizing a full
-                    application lifecycle during installation.</li>
+                <li><strong>Phase 1: Decision Logic (Node B)</strong><br>
+                    The script initializes by "branching"—detecting if it's running in CLI mode (Python
+                    <code>subprocess</code>) or UI mode (Browser <code>WASM</code>). It confirms the integrity of the
+                    Source Project (Node A) before proceeding.</li>
+
+                <li><strong>Phase 2: The Orchestration Engines (Nodes C & D)</strong><br>
+                    This is the "focus" of the tool. The **Bundler Engine** focuses on <i>Autonomy</i>: transforming
+                    every external dependency into a <code>Data-URI</code> or inlined string. The **Injector Engine**
+                    focuses on <i>System Simulation</i>: it wraps OS-level requirements (Service Workers) into the HTML
+                    document's RAM during execution.</li>
+
+                <li><strong>Phase 3: Stream Consolidation (Node G)</strong><br>
+                    Finally, the algorithm merges the outputs of both engines (E & F) into a single, cohesive buffer.
+                    The final <code>.write()</code> operation generates the standalone artifact, ready for Node H (OS
+                    Installation).</li>
             </ul>
 
             <h2>3. Code Structure Guide</h2>
