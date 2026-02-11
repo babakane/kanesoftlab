@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a QR‑Based Secret Vault | KaneSoftLab Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10rem 2rem;
+        }
+
+        .post-meta {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .post-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .post-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .post-content h2 {
+            font-size: 2rem;
+            margin: 4rem 0 1.5rem 0;
+            color: var(--text-primary);
+        }
+
+        blockquote {
+            font-size: 1.75rem;
+            font-style: italic;
+            border-left: 4px solid var(--primary-accent);
+            padding: 1rem 0 1rem 2rem;
+            margin: 4rem 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .code-block {
+            background: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 3rem 0;
+            overflow-x: auto;
+        }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">KaneSoftLab</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="apps.html">Applications</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="post-container">
+        <div class="post-meta">Feb 12, 2026 • 7 min read</div>
+        <h1 class="post-title">Building a QR‑Based Secret Vault (And Why Google Authenticator Might Already Solve Your
+            Problem)</h1>
+        <p class="post-subtitle">We all reach that moment where secrets start piling up. Could you build your own secure
+            QR‑based vault? Yes, you absolutely can.</p>
+
+        <div class="post-content">
+            <p>We all reach that moment where passwords, API keys, recovery tokens, and “scan this QR to set things up”
+                secrets start piling up. You want a safer way to store them, ideally something that works across
+                devices, feels modern, and doesn’t leak sensitive data.</p>
+
+            <blockquote>
+                “Could I build my own secure QR‑based vault?”
+            </blockquote>
+
+            <p>The short answer is yes—you absolutely can. And I’ll walk you through what that looks like. But along the
+                way, you might also discover that <strong>Google Authenticator</strong> (or similar apps) already solves
+                a big part of the problem, especially if your goal is account safety rather than custom secret
+                workflows.</p>
+
+            <h2>1. Architecture Overview</h2>
+            <div class="mermaid"
+                style="background: var(--surface-color); padding: 2rem; border-radius: 12px; margin: 3rem 0;">
+                graph TD
+                A[QR Code Source] --> B[Camera / Photo Upload]
+                B --> C[QR Decoder (html5-qrcode)]
+                C --> D[Flask API Layer]
+                D --> E[Fernet Encryption (AES-GCM)]
+                E --> F[SQLite Storage]
+                F --> G[UI Masked Preview]
+            </div>
+
+            <p>This design ensures secrets are encrypted at rest, and the UI never displays full values. Scanning works
+                via camera or photo upload, all running in a single Python file.</p>
+
+            <h2>2. Algorithm Composition</h2>
+            <p>The system is built around three core logic transformations:</p>
+            <ul style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                <li><strong>Ingestion Logic:</strong> The <code>Html5Qrcode</code> library handles the client-side heavy
+                    lifting, decoding the image buffer into a raw UTF-8 string before transmitting it to the backend.
+                </li>
+                <li><strong>Encryption Logic:</strong> On receipt, the server derives a secure key from your
+                    environment's <code>MASTER_SECRET</code>. Using **Fernet (AES-GCM)**, the raw secret is transformed
+                    into an opaque blob.</li>
+                <li><strong>Entities Composition:</strong> The system stores the entity as a record containing the blob,
+                    the auto-detected content type (URL, JSON, or Secret), and a timestamp. When queried, it recovers
+                    the secret but only exposes a <i>masked preview</i> to the UI.</li>
+            </ul>
+
+            <h2>3. Code Structure Output</h2>
+            <p>The project follows a "Single-File Microservice" pattern, ideal for local deployment or containerization:
+            </p>
+            <div class="code-block">
+                qr_vault/<br>
+                ├── app.py # Main Flask + PWA Logic<br>
+                ├── requirements.txt # flask, cryptography<br>
+                ├── README.md # Security/Setup Guide<br>
+                └── qr_vault.db # Encrypted SQLite Storage (Auto-created)
+            </div>
+
+            <h2>Custom Vault vs. Google Authenticator</h2>
+            <p>While building a custom vault is exciting, Google Authenticator already solves the core problem for most
+                users. If your primary need is Protecting your accounts via <strong>TOTP seeds</strong>, stick with the
+                battle-tested apps.</p>
+
+            <p>However, choose the <strong>Custom QR Vault</strong> when you need to store non-TOTP secrets like API
+                keys, SSH tokens, or database passwords, and you want full control over where your data lives.</p>
+
+            <div
+                style="margin-top: 5rem; text-align: center; background: var(--surface-color); padding: 4rem; border-radius: 20px; border: 1px solid var(--border-color);">
+                <h2 style="margin-top: 0;">Access the Project</h2>
+                <p>Grab the source code and deploy your own private vault today.</p>
+                <div class="cta-group" style="margin-top: 2rem;">
+                    <a href="https://github.com/babakane" class="btn btn-primary">GitHub Repo</a>
+                    <a href="apps.html" class="btn btn-secondary">Software Hub</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
+            <a href="blog.html" style="color: var(--primary-accent); font-weight: 600;">← Back to Blog</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 KaneSoftLab. Built with Passion for the Open Source Community.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
