@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Waves Pro: Engineering a Digital "Flow State" Cocoon | KaneSoftLab Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10rem 2rem;
+        }
+
+        .post-meta {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .post-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .post-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .post-content h2 {
+            font-size: 2rem;
+            margin: 4rem 0 1.5rem 0;
+            color: var(--text-primary);
+        }
+
+        blockquote {
+            font-size: 1.75rem;
+            font-style: italic;
+            border-left: 4px solid var(--primary-accent);
+            padding: 1rem 0 1rem 2rem;
+            margin: 4rem 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .code-block {
+            background: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 3rem 0;
+            overflow-x: auto;
+        }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">KaneSoftLab</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="apps.html">Applications</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="post-container">
+        <div class="post-meta">Feb 12, 2026 • 8 min read</div>
+        <h1 class="post-title">Focus Waves Pro: Engineering a Digital "Flow State" Cocoon</h1>
+        <p class="post-subtitle">How we built a single-file PWA to shield the modern digital nomad from a noisy world.
+        </p>
+
+        <div class="post-content">
+            <p>Focus Waves Pro is more than just a noise generator. It is a zero-dependency Progressive Web App (PWA)
+                designed to serve as a digital shield for nomads—whether in a city café, on a bus, or deep in a desktop
+                workflow.</p>
+
+            <blockquote>
+                "True productivity isn't just about managing time; it's about guarding your focus state against the
+                noise of the physical world."
+            </blockquote>
+
+            <h2>1. Architecture Overview</h2>
+            <div class="mermaid"
+                style="background: var(--surface-color); padding: 2rem; border-radius: 12px; margin: 3rem 0;">
+                graph TD
+                A[User Interface (MMI)] --> B[Audio Engine (Web Audio API)]
+                A --> C[IPTV Engine (HLS.js)]
+                B --> B1[Noise Patterns: White/Pink]
+                B --> B2[Binaural Oscillations]
+                B --> B3[Transparency Matrix]
+                C --> C1[Global M3U Scraper]
+                C --> C2[Smart Virtualization]
+                C1 --> D[Output: Visual Focus]
+                B1 & B2 & B3 --> E[Output: Sound Cocoon]
+            </div>
+
+            <h2>2. Algorithm Composition</h2>
+            <p>To achieve high performance in a single file, the app employs three critical algorithmic blocks:</p>
+            <ul style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                <li><strong>Psychoacoustic Synthesis:</strong> The Audio Engine doesn't play MP3s. It uses
+                    <code>createBufferSource</code> to generate random noise matrices programmatically. This ensures
+                    zero network latency and infinite looping.</li>
+                <li><strong>Stream Virtualization:</strong> Parsing 10,000+ IPTV channels is expensive. The app uses a
+                    "sliding window" virtualization logic that only processes the DOM metadata for visible channels,
+                    maintaining 60FPS on mobile.</li>
+                <li><strong>Contextual Task Management (Local Persistence):</strong> Your <i>Active Objective</i> is
+                    mapped to a <code>localStorage</code> entities composition, ensuring that your focus goals persist
+                    across browser refreshes without a backend.</li>
+            </ul>
+
+            <h2>3. Code Structure Guide</h2>
+            <p>The project is optimized for portability, existing as a standalone artifact:</p>
+            <div class="code-block">
+                focus_waves_pro/<br>
+                ├── index.html # Monolithic PWA (Styles, Logic, Structure)<br>
+                ├── sw.js # Offline Persistence Layer<br>
+                └── README.md # Technical Principles & Documentation
+            </div>
+
+            <h2>The MMI Experience</h2>
+            <p>The UI follows Multi-Media Interface (MMI) principles. On desktop, it acts as a three-column mission
+                control. On mobile, it transforms into a thumb-optimized travel bar, with controls placed in the natural
+                arc of movement for safe, one-handed focus adjustments.</p>
+
+            <div
+                style="margin-top: 5rem; text-align: center; background: var(--surface-color); padding: 4rem; border-radius: 20px; border: 1px solid var(--border-color);">
+                <h2 style="margin-top: 0;">Experience Focus Waves Pro</h2>
+                <p>Deploy the digital cocoon and reclaim your focus today.</p>
+                <div class="cta-group" style="margin-top: 2rem;">
+                    <a href="https://github.com/babakane" class="btn btn-primary">GitHub Source</a>
+                    <a href="apps.html" class="btn btn-secondary">Software Hub</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
+            <a href="blog.html" style="color: var(--primary-accent); font-weight: 600;">← Back to Blog</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 KaneSoftLab. Built with Passion for the Open Source Community.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
